@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>宽高和内容溢出</title>
+		<style type="text/css">
+			section{
+				width：300px；
+				/*没有明确宽度的时候  它的宽度是百分百*/
+				height: 100px;
+				border: 5px solid red;
+				
+				/*max-width：最大宽度*/
+				/*会随着浏览器的窗口宽度的增加而变化，但最大不会超过800px*/
+				/*max-width: 800px;*/
+				
+				/*min-width: 最小宽度;*/
+				/*默认是100%的宽度，会随着窗口的变窄而减小宽度，但不会小于500px
+				 如果窗口再小就会出现滚动条*/
+				/*min-width: 500px;*/
+				
+				/*注意：设置width后，min-width、max-width就不在起作用*/
+				
+				/*overflow：溢出*/
+				/*hidden：溢出的内容被剪除
+				 scroll：溢出的内容可以滚动在范围内*/
+				overflow:scroll;
+				
+				/*也可以单方向控制溢出内容*/
+				/*overflow-x: scroll;
+				overflow-y: hidden;*/
+				
+				/*中文字符可以在任意的两个字之间换行，通常会出现纵向的滚动条
+				 英文状态下，如果是一个很长的单词，就不会在单词内部进行打断
+				 然后换行*/
+				
+				/*如果加上空格（键盘上的空格），那么就会在空格的地方进行换行
+				 如果这个空格是转义字符的话（&nbsp；是一个实体），是非换行的空格，
+				 会被当作一个字母对待*/
+				
+				/*overflow-wrap或word-warp强制换行的样式  可以直接打断单词*/
+				/*overflow-wrap: break-word;*/
+				/*word-wrap: break-word;*/
+				
+				/*resize：手动调整元素大小
+				 * horizontal：水平方向
+				 * vertical：垂直方向
+				 * both：两个方向都有
+				 注意点：如果希望样式生效，那么需要设置元素的overflow样式才可以*/
+				resize: both;
+			}
+		</style>
+	</head>
+	<body>
+		<section>
+			<!--中文会自动换行-->
+			<!--内容内容内容内容内容内容内容内容
+			内容内容内容内容内容内容内容内容
+			内容内容内容内容内容内容内容内容
+			内容内容内容内容内容内容内容内容
+			内容内容内容内容内容内容内容内容
+			内容内容内容内容内容内容内容内容
+			内容内容内容内容内容内容内容内容-->
+			
+			<!--英文不会自动换行-->
+		ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+		<!--ddddddddddd    dddddddddd ddddddd-->      
+		</section>
+	</body>
+</html>
