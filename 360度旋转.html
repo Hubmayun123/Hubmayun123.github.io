@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>360度旋转</title>
+		<script src="jquery/jquery-3.1.1.js"></script>
+		<style type="text/css">
+			html,body,ul,li{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.container{
+				width: 400px;
+				height: 255px;
+				border: 5px solid #ccc;
+				margin: 50px auto;
+				overflow: hidden;
+			}
+			.container ul{
+				width: 400px;
+				height: 255px;
+			}
+			.container ul li{
+				display: none;
+			}
+			.container ul li img{
+				display: block;
+				width: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<!--ul>(li>img[src="images/image1_$.jpg" alt="鞋子"])*18-->
+			<ul class="list">
+				<li style="display: block;"><img src="images/image1_1.jpg" alt="鞋子" /></li>
+				<li><img src="images/image1_2.jpg" alt="鞋子" /></li>
+				<li><img src="images/image1_3.jpg" alt="鞋子" /></li>
+				<li><img src="images/image1_4.jpg" alt="鞋子" /></li>
+				<li><img src="images/image1_5.jpg" alt="鞋子" /></li>
+				<li><img src="images/image1_6.jpg" alt="鞋子" /></li>
+				<li><img src="images/image1_7.jpg" alt="鞋子" /></li>
+				<li><img src="images/image1_8.jpg" alt="鞋子" /></li>
+				<li><img src="images/image1_9.jpg" alt="鞋子" /></li>
+				<li><img src="images/image1_10.jpg" alt="鞋子" /></li>
+				<li><img src="images/image1_11.jpg" alt="鞋子" /></li>
+				<li><img src="images/image1_12.jpg" alt="鞋子" /></li>
+				<li><img src="images/image1_13.jpg" alt="鞋子" /></li>
+				<li><img src="images/image1_14.jpg" alt="鞋子" /></li>
+				<li><img src="images/image1_15.jpg" alt="鞋子" /></li>
+				<li><img src="images/image1_16.jpg" alt="鞋子" /></li>
+				<li><img src="images/image1_17.jpg" alt="鞋子" /></li>
+				<li><img src="images/image1_18.jpg" alt="鞋子" /></li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	// 获取盒子距离文档左边的距离(相当于 left 值)
+	var pic_x = $('.list').offset().left;
+	// 获取盒子的宽度的一半
+	var pic_half_w = $('.list').width() / 2;
+	// 获取中心点坐标  
+	var center_x = pic_x + pic_half_w;
+	// 把一半再分成 18 小分
+	var avg = pic_half_w / 18;
+	// 给 .list 添加鼠标移动事件
+	$('.list').mousemove(function(event){
+		// 获取鼠标移动的位置相对于整个 document 的坐标
+		var page_x = event.pageX;
+		var page_y = event.pageY;
+		// 判断鼠标是左半部分移动还是有半部分
+		if (center_x - page_x > 0) {
+			// 左  0 1 …… 16 17
+			var index = Math.ceil((center_x - page_x) / avg);
+			$('.list li').eq(18 - index).show().siblings().hide();
+		} else{
+			// 右 0 1 …… 16 17
+			var index = Math.floor((page_x - center_x) / avg);
+			$('.list li').eq(index).show().siblings().hide();
+		}
+	});
+</script>
